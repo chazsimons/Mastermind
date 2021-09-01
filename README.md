@@ -39,3 +39,7 @@ Notes and ideas
   number of colors correct = any? method for arrays
   number of correct positions = need a method to compare elements in arrays by index
   convert user input to an array inside methods as necessary.
+
+  start_time = Time.now
+  end_time = Time.now
+  elapsed = end_time - start_time
