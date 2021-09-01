@@ -11,4 +11,6 @@ describe Game do
     game = Game.new
     expect(game.create_code.length).to eq 4
   end
+
+
 end

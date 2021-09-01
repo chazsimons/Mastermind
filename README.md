@@ -33,7 +33,7 @@ Psuedocode
 Notes and ideas
 
   Feedback example
-  *'#{user_input}'* has *#{number of correct colors}* of the correct elements with *#{number of correct positions}* in the correct positions*
+  *'#{user_input}'* has *#{compare_colors}* of the correct elements with *#{compare_placement}* in the correct positions*
   You've taken *#{number of guesses taken}* guess
 
   number of colors correct = any? method for arrays
