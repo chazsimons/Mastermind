@@ -28,25 +28,42 @@ class Game
     @user_input = gets.chomp
     user_input.upcase!
     user_input.split(//)
-  end
-
-  def start
-    create_code
-
-    loop do
-      announcement
-      get_guess
-        if user_input == ['Q'] || ['Q', 'U','I','T']
-          break
-        elsif user_input == ['C'] || ['C','H','E','A','T']
-          p secret
-        end
-      winner?
-      if winner? == true
-        break
-      end
+    p user_input
+    if user_input == ['Q'] || ['Q', 'U','I','T']
+      exit(true)
+    elsif user_input == ['C'] || ['C','H','E','A','T']
+      p secret
     end
   end
+
+  def winner?
+    create_code
+    get_guess
+    colors = 4 - (user_input - secret).count
+    index = 0
+    positions = 0
+    4.times do
+      if user_input[index] == secret[index]
+        positions += 1
+      end
+    index += 1
+    puts colors
+    puts positions
+  end
+
+  # def start
+  #   create_code
+  #   count = 0
+  #   loop do
+  #     count += 1
+  #     announcement
+  #     winner?
+  #     #some condition to break the loop
+  #   end
+  #   puts "Congratulations! You guessed the sequence '#{user_input}' in #{count} guesses over #time."
+  # end
+  # end
+end
 end
 
 # game = Game.new
