@@ -12,5 +12,16 @@ describe Game do
     expect(game.create_code.length).to eq 4
   end
 
+  it "can take a users input" do
+    game = Game.new
+    expect(game.get_guess.length).to eq 4
+    expect(game.get_guess).to be_an(Array)
+  end
+
+  it "can check colors and positions of guess" do
+    game = Game.new
+
+    expect(game.winner?).to eq 5
+  end
 
 end
