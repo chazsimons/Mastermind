@@ -12,11 +12,7 @@ describe Game do
     expect(game.create_code.length).to eq 4
   end
 
-<<<<<<< HEAD
   it "can take a users input" do
-=======
-  xit "can take a users input" do
->>>>>>> 72a56c73a587a9afa48932b124693babcd9c00e0
     game = Game.new
     expect(game.get_guess.length).to eq 4
     expect(game.get_guess).to be_an(Array)
