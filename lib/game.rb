@@ -35,19 +35,23 @@ class Game
     @user_input = gets.chomp
     user_input.upcase!
     user_input.split(//)
-    if user_input == ['Q'] || ['Q','U','I','T']
-      exit(true)
-    elsif user_input == ['C'] || ['C','H','E','A','T']
-      p secret
-    end
-    if user_input.count > 4 || user_input < 4
-      puts "Guesses must consist of only 4 characters!"
-    end
-    if user_input[0] != ["r", "g", "b", "y"]
+    print user_input
+
+    # if user_input == ['Q'] || ['Q','U','I','T']
+    #   exit(true)
+    # elsif user_input == ['C'] || ['C','H','E','A','T']
+    #   p secret
+    # end
+
+    # if user_input.count > 4
+    #   puts "Guesses must consist of only 4 characters! Your guess is too long!"
+    # elsif user_input.count < 4
+    #   puts "Guesses must consist of only 4 characters! Your guess is too short!"
+    # end
   end
 
+
   def winner?
-    create_code
     get_guess
     colors = 4 - (user_input - secret).count
     index = 0
@@ -57,24 +61,24 @@ class Game
         positions += 1
       end
     index += 1
+    end
     puts colors
     puts positions
   end
 
-  # def start
-  #   create_code
-  #   count = 0
-  #   loop do
-  #     count += 1
-  #     announcement
-  #     winner?
-  #     #some condition to break the loop
-  #   end
-  #   puts "Congratulations! You guessed the sequence '#{user_input}' in #{count} guesses over #time."
-  # end
-  # end
+  def start
+    create_code
+    count = 0
+    loop do
+      count += 1
+      announcement
+      winner?
+      #some condition to break the loop
+    end
+    puts "Congratulations! You guessed the sequence '#{user_input}' in #{count} guesses over #time."
+  end
 end
-end
+
 
 # game = Game.new
 # code = game.create_code
