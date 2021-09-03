@@ -32,10 +32,10 @@ class Game
   end
 
   def get_guess
-    @user_input = gets.chomp
-    user_input.upcase!
-    user_input.split(//)
-    print user_input
+    guess = gets.chomp
+    guess.upcase!
+    @user_input = guess.split(//)
+
 
     # if user_input == ['Q'] || ['Q','U','I','T']
     #   exit(true)
@@ -53,6 +53,7 @@ class Game
 
   def winner?
     get_guess
+    @user_input
     colors = 4 - (user_input - secret).count
     index = 0
     positions = 0
@@ -62,8 +63,9 @@ class Game
       end
     index += 1
     end
-    puts colors
-    puts positions
+
+    puts "#{@user_input.join} has #{colors} of the correct elements with #{positions} in the correct positions."
+
   end
 
   def start
@@ -73,7 +75,12 @@ class Game
       count += 1
       announcement
       winner?
-      #some condition to break the loop
+      if count > 1
+        puts "You have taken #{count} guesses."
+      elsif
+        puts "You have taken #{count} guess."
+      end
+    #some condition to break the loop
     end
     puts "Congratulations! You guessed the sequence '#{user_input}' in #{count} guesses over #time."
   end
