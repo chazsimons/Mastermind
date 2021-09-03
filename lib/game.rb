@@ -43,11 +43,11 @@ class Game
     if user_input.count > 4 || user_input < 4
       puts "Guesses must consist of only 4 characters!"
     end
-    if user_input[0] != ["r", "g", "b", "y"]
+    # if user_input[0] != ["r", "g", "b", "y"]
   end
 
   def winner?
-    create_code
+    create_code #delete after testing otherwise it'll create a new code every loop
     get_guess
     colors = 4 - (user_input - secret).count
     index = 0
