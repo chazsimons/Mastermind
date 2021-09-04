@@ -26,22 +26,27 @@ class Game
     guess.upcase!
     @user_input = guess.split(//)
 
-    if guess == "Q" || guess == "QUIT"
-      exit(true)
-    elsif guess == "C" || guess == "CHEAT"
-      p secret
-    end
+      if guess == "Q" || guess == "QUIT"
+        exit(true)
+      elsif guess == "C" || guess == "CHEAT"
+        p "The secret code is '#{secret.join}'."
+      end
 
-    if @user_input.count > 4
-      puts "Guesses must consist of only 4 characters! Your guess is too long!"
-    elsif @user_input.count < 4
-      puts "Guesses must consist of only 4 characters! Your guess is too short!"
-    end
+      if @user_input.count > 4
+        puts "Guesses must consist of 4 characters. Your guess is too long! Try again:"
+        print ">"
+      elsif @user_input.count < 4
+        puts "Guesses must consist of 4 characters. Your guess is too short! Try again:"
+        print ">"
+      end
   end
 
   def winner?
     get_guess
-    @user_input
+    until @user_input.count == 4 do
+      get_guess
+    end
+
     colors = (user_input & secret).count
     index = 0
     @positions = 0

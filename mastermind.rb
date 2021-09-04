@@ -11,7 +11,6 @@ game = Game.new
 text = Text.new
 
 puts "Welcome to MASTERMIND"
-
 loop do
   text.welcome
   input = gets.chomp.downcase
