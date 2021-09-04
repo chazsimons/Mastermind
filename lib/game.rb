@@ -8,6 +8,7 @@ class Game
     @base = ['R', 'G', 'Y', 'B']
     @secret = []
     @user_input = ""
+    @positions = 0
   end
 
   def create_code
@@ -37,11 +38,11 @@ class Game
     @user_input = guess.split(//)
 
 
-    # if user_input == ['Q'] || ['Q','U','I','T']
-    #   exit(true)
-    # elsif user_input == ['C'] || ['C','H','E','A','T']
-    #   p secret
-    # end
+    if guess == "Q" || guess == "QUIT"
+      exit(true)
+    elsif guess == "C" || guess == "CHEAT"
+      p secret
+    end
 
     # if user_input.count > 4
     #   puts "Guesses must consist of only 4 characters! Your guess is too long!"
@@ -54,24 +55,26 @@ class Game
   def winner?
     get_guess
     @user_input
-    colors = 4 - (user_input - secret).count
+    colors = (user_input & secret).count
     index = 0
-    positions = 0
+    @positions = 0
     4.times do
       if user_input[index] == secret[index]
-        positions += 1
+        @positions += 1
       end
     index += 1
     end
 
-    puts "#{@user_input.join} has #{colors} of the correct elements with #{positions} in the correct positions."
-
+    if @positions < 4
+      puts "'#{@user_input.join}' has #{colors} of the correct elements with #{@positions} in the correct positions."
+    end
   end
 
   def start
     create_code
+    start_time = Time.now.to_i
     count = 0
-    loop do
+    until @positions == 4 do
       count += 1
       announcement
       winner?
@@ -80,9 +83,10 @@ class Game
       elsif
         puts "You have taken #{count} guess."
       end
-    #some condition to break the loop
     end
-    puts "Congratulations! You guessed the sequence '#{user_input}' in #{count} guesses over #time."
+    end_time = Time.now.to_i
+    total_time = end_time - start_time
+    puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{total_time}."
   end
 end
 
