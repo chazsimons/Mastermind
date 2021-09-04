@@ -39,7 +39,6 @@ class Game
     end
   end
 
-
   def winner?
     get_guess
     @user_input
@@ -65,12 +64,10 @@ class Game
     until @positions == 4 do
       count += 1
       @text.announcement
-      #get_guess
       winner?
       if count > 1
         puts "You have taken #{count} guesses."
-      elsif
-        puts "You have taken #{count} guess."
+      elsif puts "You have taken #{count} guess."
       end
     end
     end_time = Time.now.to_i
@@ -88,7 +85,3 @@ class Game
     end
   end
 end
-
-
-# game = Game.new
-# code = game.create_code
