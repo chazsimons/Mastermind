@@ -16,7 +16,6 @@ loop do
   input = gets.chomp.downcase
   if input == 'p' || input == 'play'
     game.start
-    break
   elsif input == 'i' || input == 'instructions'
     game.instructions # game.insructions
   elsif input == 'q' || input == 'quit'

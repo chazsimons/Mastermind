@@ -24,4 +24,12 @@ describe Game do
     expect(game.winner?).to eq 5
   end
 
+  it 'can return instructions' do
+    game = Game.new
+
+    expect(game.instructions).to be_a(string)
+  end
+
+  
+
 end
