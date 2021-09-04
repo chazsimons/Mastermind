@@ -1,3 +1,4 @@
+require './lib/text'
 
 class Game
   attr_reader :secret,
@@ -9,6 +10,7 @@ class Game
     @secret = []
     @user_input = ""
     @positions = 0
+    @text = Text.new
   end
 
   def create_code
@@ -17,19 +19,6 @@ class Game
       secret << base[0]
     end
     secret
-  end
-
-  def announcement
-    puts "I have generated a beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.
-      What's your guess?"
-    print '>'
-  end
-
-  def instructions
-    puts "To play this game, guess the secret code. The secret code consists of any combination of these 4 letters (r, g, b and y)."
-    puts "Your guess must consist of those 4 characters only. Repeats of the characters are allowed example: bbry. Hints are provided"
-    puts "about the correct colors and positions of your guess. Can you narrow it down to win?"
-    puts "If you are getting frustrated while playing, press 'q' to quit or 'c' to cheat (you lazy bum :p)."
   end
 
   def get_guess
@@ -75,7 +64,7 @@ class Game
     count = 0
     until @positions == 4 do
       count += 1
-      announcement
+      @text.announcement
       #get_guess
       winner?
       if count > 1
@@ -88,10 +77,14 @@ class Game
     total_time = end_time - start_time
     if total_time < 60
       puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{total_time} seconds."
-    elsif total_time > 60
+    elsif total_time < 120
       minutes = total_time / 60
       seconds = total_time % 60
-      puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{minutes} minute/s and #{seconds} seconds."
+      puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{minutes} minute and #{seconds} seconds."
+    elsif total_time > 120
+      minutes = total_time / 60
+      seconds = total_time % 60
+      puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{minutes} minutes and #{seconds} seconds."
     end
   end
 end
