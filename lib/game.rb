@@ -37,18 +37,17 @@ class Game
     guess.upcase!
     @user_input = guess.split(//)
 
-
     if guess == "Q" || guess == "QUIT"
       exit(true)
     elsif guess == "C" || guess == "CHEAT"
       p secret
     end
 
-    # if user_input.count > 4
-    #   puts "Guesses must consist of only 4 characters! Your guess is too long!"
-    # elsif user_input.count < 4
-    #   puts "Guesses must consist of only 4 characters! Your guess is too short!"
-    # end
+    if @user_input.count > 4
+      puts "Guesses must consist of only 4 characters! Your guess is too long!"
+    elsif @user_input.count < 4
+      puts "Guesses must consist of only 4 characters! Your guess is too short!"
+    end
   end
 
 
@@ -77,6 +76,7 @@ class Game
     until @positions == 4 do
       count += 1
       announcement
+      #get_guess
       winner?
       if count > 1
         puts "You have taken #{count} guesses."
@@ -86,7 +86,13 @@ class Game
     end
     end_time = Time.now.to_i
     total_time = end_time - start_time
-    puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{total_time}."
+    if total_time < 60
+      puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{total_time} seconds."
+    elsif total_time > 60
+      minutes = total_time / 60
+      seconds = total_time % 60
+      puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{minutes} minute/s and #{seconds} seconds."
+    end
   end
 end
 
