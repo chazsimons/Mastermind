@@ -28,4 +28,14 @@ class Text
     puts "Would you like to (p)lay again or (q)uit?"
     print ">"
   end
+
+  def guess_too_long
+    puts "Guesses must consist of 4 characters. Your guess is too long! Try again:"
+    print ">"
+  end
+
+  def guess_too_short
+    puts "Guesses must consist of 4 characters. Your guess is too short! Try again:"
+    print ">"
+  end
 end
