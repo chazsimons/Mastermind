@@ -8,7 +8,7 @@ class Game
   def initialize
     @base = ['R', 'G', 'Y', 'B']
     @secret = []
-    @user_input = ""
+    @user_input = []
     @positions = 0
     @text = Text.new
     @start_time = 0
@@ -53,7 +53,7 @@ class Game
     colors = (user_input & secret).count
     index = 0
     @positions = 0
-    4.times do
+    4.times do #each_with_index for when we add difficulty
       if user_input[index] == secret[index]
         @positions += 1
       end
@@ -74,8 +74,9 @@ class Game
       @text.announcement
       evaluate_guess
       if @count > 1
-        puts "You have taken #{@count} guesses."
-      elsif puts "You have taken #{@count} guess."
+        puts "You have taken #{@count} guess(es)."
+      else
+        puts "You have taken #{@count} guess."
       end
     end
     @end_time = Time.now.to_i
@@ -91,7 +92,7 @@ class Game
       puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{@count} guesses over #{total_time} seconds."
     elsif total_time < 120
       puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{@count} guesses over #{minutes} minute and #{seconds} seconds."
-    elsif total_time > 120
+    else
       puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{@count} guesses over #{minutes} minutes and #{seconds} seconds."
     end
   end
