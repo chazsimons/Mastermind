@@ -33,10 +33,9 @@ describe Game do
 
   it "can determine the positions correct of a guess" do
     game = Game.new
-    game.user_input = ['R', 'R', 'B', 'G']
-    game.secret = ['R', 'G', 'B', 'Y']
+    results = game.evaluate_guess
 
-    expect(game.evaluate_guess).to eq 2
+    expect(results).to eq 
   end
 
   # it 'can calculate time taken' do

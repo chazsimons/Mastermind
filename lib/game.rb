@@ -34,7 +34,6 @@ class Game
       p "The secret code is '#{secret.join}'."
     end
     length_check
-    @user_input
   end
 
   def length_check

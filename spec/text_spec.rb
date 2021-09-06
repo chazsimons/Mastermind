@@ -9,25 +9,25 @@ describe Text do
     expect(text).to be_a(Text)
   end
 
-  xit 'can welcome new players' do
+  it 'can welcome new players' do
     text = Text.new
     results = text.welcome
 
-    expect(results).to be_a(String)
+    expect(results).to eq(text.welcome)
   end
 
-  xit 'can display instructions' do
+  it 'can display instructions' do
     text = Text.new
     results = text.instructions
 
-    expect(results).to be_a(String)
+    expect(results).to eq(text.instructions)
   end
 
-  xit 'can prompt for a guess' do
+  it 'can prompt for a guess' do
     text = Text.new
     results = text.announcement
 
-    expect(results).to be_a(String)
+    expect(results).to eq(text.announcement)
   end
 
 end
