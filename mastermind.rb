@@ -1,12 +1,6 @@
 require './lib/game'
 require './lib/text'
 
-# puts "Welcome to MASTERMIND"
-# puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
-# print ">"
-
-
-
 game = Game.new
 text = Text.new
 
@@ -20,6 +14,16 @@ loop do
   elsif input == 'i' || input == 'instructions'
     text.instructions # game.insructions
   elsif input == 'q' || input == 'quit'
-    break
+    exit(true)
+  end
+end
+
+loop do
+  text.play_again
+  input = gets.chomp.downcase
+  if input == 'p' || input == 'play'
+    game.start #doesn't call a new instance of start. Just returns the win of first game instantly.
+  elsif input == 'q' || input == 'quit'
+    exit(true)
   end
 end

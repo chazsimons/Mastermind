@@ -24,7 +24,8 @@ class Text
     print ">"
   end
 
-  def repeat
+  def play_again
+    puts "Thanks for playing!"
     puts "Would you like to (p)lay again or (q)uit?"
     print ">"
   end

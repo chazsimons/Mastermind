@@ -14,22 +14,24 @@ describe Game do
 
   it "can take a users input" do
     game = Game.new
-    expect(game.get_guess.length).to eq 4
+    expect(game.get_guess.count).to eq 4
     expect(game.get_guess).to be_an(Array)
   end
 
-  it "can check colors and positions of guess" do
-    game = Game.new
+  # it "can determine the positions correct of a guess" do
+  #   game = Game.new
+  #   game.user_input = ['R', 'R', 'B', 'G']
+  #   game.secret = ['R', 'G', 'B', 'Y']
+  #
+  #   expect(game.winner).to eq 2
+  # end
 
-    expect(game.winner?).to eq 5
-  end
+  # it '#start method' do
+  #   game = Game.new
+  #
+  #
+  # end
 
-  it 'can return instructions' do
-    game = Game.new
 
-    expect(game.instructions).to be_a(string)
-  end
-
-  
 
 end

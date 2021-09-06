@@ -39,7 +39,7 @@ class Game
     end
   end
 
-  def winner?
+  def winner
     get_guess
     until @user_input.count == 4 do
       get_guess
@@ -67,7 +67,7 @@ class Game
     until @positions == 4 do
       count += 1
       @text.announcement
-      winner?
+      winner
       if count > 1
         puts "You have taken #{count} guesses."
       elsif puts "You have taken #{count} guess."
@@ -75,15 +75,14 @@ class Game
     end
     end_time = Time.now.to_i
     total_time = end_time - start_time
+    minutes = total_time / 60
+    seconds = total_time % 60
+    
     if total_time < 60
       puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{total_time} seconds."
     elsif total_time < 120
-      minutes = total_time / 60
-      seconds = total_time % 60
       puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{minutes} minute and #{seconds} seconds."
     elsif total_time > 120
-      minutes = total_time / 60
-      seconds = total_time % 60
       puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{minutes} minutes and #{seconds} seconds."
     end
   end
