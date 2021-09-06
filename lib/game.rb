@@ -11,6 +11,8 @@ class Game
     @user_input = ""
     @positions = 0
     @text = Text.new
+    @start_time = 0
+    @end_time = 0
   end
 
   def create_code
@@ -31,7 +33,11 @@ class Game
     elsif guess == "C" || guess == "CHEAT"
       p "The secret code is '#{secret.join}'."
     end
+    length_check
+    @user_input
+  end
 
+  def length_check
     if @user_input.count > 4
       @text.guess_too_long
     elsif @user_input.count < 4
@@ -39,7 +45,7 @@ class Game
     end
   end
 
-  def winner
+  def evaluate_guess
     get_guess
     until @user_input.count == 4 do
       get_guess
@@ -62,28 +68,32 @@ class Game
 
   def start
     create_code
-    start_time = Time.now.to_i
-    count = 0
+    @start_time = Time.now.to_i
+    @count = 0
     until @positions == 4 do
-      count += 1
+      @count += 1
       @text.announcement
-      winner
-      if count > 1
-        puts "You have taken #{count} guesses."
-      elsif puts "You have taken #{count} guess."
+      evaluate_guess
+      if @count > 1
+        puts "You have taken #{@count} guesses."
+      elsif puts "You have taken #{@count} guess."
       end
     end
-    end_time = Time.now.to_i
-    total_time = end_time - start_time
+    @end_time = Time.now.to_i
+    endgame
+  end
+
+  def endgame
+    total_time = @end_time - @start_time
     minutes = total_time / 60
     seconds = total_time % 60
-    
+
     if total_time < 60
-      puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{total_time} seconds."
+      puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{@count} guesses over #{total_time} seconds."
     elsif total_time < 120
-      puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{minutes} minute and #{seconds} seconds."
+      puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{@count} guesses over #{minutes} minute and #{seconds} seconds."
     elsif total_time > 120
-      puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{count} guesses over #{minutes} minutes and #{seconds} seconds."
+      puts "Congratulations! You guessed the sequence '#{user_input.join}' in #{@count} guesses over #{minutes} minutes and #{seconds} seconds."
     end
   end
 end
