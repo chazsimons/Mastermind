@@ -16,6 +16,7 @@ loop do
   elsif input == 'i' || input == 'instructions'
     text.instructions # game.insructions
   elsif input == 'q' || input == 'quit'
+    text.exit_message
     exit(true)
   end
 end

@@ -29,6 +29,7 @@ class Game
     @user_input = guess.split(//)
 
     if guess == "Q" || guess == "QUIT"
+      text.exit_message
       exit(true)
     elsif guess == "C" || guess == "CHEAT"
       p "The secret code is '#{secret.join}'."
