@@ -42,4 +42,8 @@ class Text
     puts "Guesses must consist of 4 characters. Your guess is too short! Try again:"
     print ">"
   end
+
+  def exit_message
+    puts "Thanks for playing!"
+  end
 end
