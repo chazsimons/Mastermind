@@ -4,10 +4,16 @@ class Text
   end
 
   def instructions
-    puts "To play this game, guess the secret code. The secret code consists of any combination of these 4 letters (r, g, b and y)."
+    puts "
+╭━━╮╱╱╱╱╱╭╮╱╱╱╱╱╱╱╱╭╮
+╰┫┣╯╱╱╱╱╭╯╰╮╱╱╱╱╱╱╭╯╰╮
+╱┃┃╭━╮╭━┻╮╭╋━┳╮╭┳━┻╮╭╋┳━━┳━╮╭━━╮
+╱┃┃┃╭╮┫━━┫┃┃╭┫┃┃┃╭━┫┃┣┫╭╮┃╭╮┫━━┫
+╭┫┣┫┃┃┣━━┃╰┫┃┃╰╯┃╰━┫╰┫┃╰╯┃┃┃┣━━┃
+╰━━┻╯╰┻━━┻━┻╯╰━━┻━━┻━┻┻━━┻╯╰┻━━╯"
+    puts "To play this game, guess the secret code. The secret code consists of any combination of these 4 letters: r, g, b and y."
     puts ""
-    puts "Your guess must consist of those 4 characters only. Repeats of the characters are allowed [example: bbry]. Hints are provided"
-    puts "about the correct colors and positions of your guess. Can you narrow it down to win?"
+    puts "Your guess must consist of those 4 characters only. Repeats of the characters are allowed [example: bbry]. Hints are provided about the correct colors and positions of your guess. Can you narrow it down to win?"
     puts ""
     puts "If you are getting frustrated while playing, press 'q' to quit or 'c' to cheat (you lazy bum :p)."
     puts ""
@@ -19,16 +25,17 @@ class Text
     print '>'
   end
 
+  def keep_guessing
+    puts "Nice guess! Use r, g, b, and y to try again:"
+    print ">"
+  end
+
   def welcome
     puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
     print ">"
   end
 
-
-
-
-  def repeat
-
+  def play_again
     puts "Would you like to (p)lay again or (q)uit?"
     print ">"
   end
@@ -44,6 +51,14 @@ class Text
   end
 
   def exit_message
-    puts "Thanks for playing!"
+    puts "
+╭━━━━┳╮╱╱╱╱╱╱╱╭╮╱╱╱╱╱╱╭━╮╱╱╱╱╱╱╱╱╭╮╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮
+┃╭╮╭╮┃┃╱╱╱╱╱╱╱┃┃╱╱╱╱╱╱┃╭╯╱╱╱╱╱╱╱╱┃┃╱╱╱╱╱╱╱╱╱╱╱╱╱╱┃┃
+╰╯┃┃╰┫╰━┳━━┳━╮┃┃╭┳━━╮╭╯╰┳━━┳━╮╭━━┫┃╭━━┳╮╱╭┳┳━╮╭━━┫┃
+╱╱┃┃╱┃╭╮┃╭╮┃╭╮┫╰╯┫━━┫╰╮╭┫╭╮┃╭╯┃╭╮┃┃┃╭╮┃┃╱┃┣┫╭╮┫╭╮┣╯
+╱╱┃┃╱┃┃┃┃╭╮┃┃┃┃╭╮╋━━┃╱┃┃┃╰╯┃┃╱┃╰╯┃╰┫╭╮┃╰━╯┃┃┃┃┃╰╯┣╮
+╱╱╰╯╱╰╯╰┻╯╰┻╯╰┻╯╰┻━━╯╱╰╯╰━━┻╯╱┃╭━┻━┻╯╰┻━╮╭┻┻╯╰┻━╮┣╯
+╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱┃┃╱╱╱╱╱╱╭━╯┃╱╱╱╱╭━╯┃
+╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰╯╱╱╱╱╱╱╰━━╯╱╱╱╱╰━━╯"
   end
 end

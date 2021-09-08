@@ -27,14 +27,16 @@ class Game
     create_code
     @start_time = Time.now.to_i
     @count = 0
+    @text.announcement
     until @guess.positions == 4 do
       @count += 1
-      @text.announcement
       @guess.evaluate_guess
       if @count > 1
         puts "You have taken #{@count} guess(es)."
+        @text.keep_guessing
       else
         puts "You have taken #{@count} guess."
+        @text.keep_guessing
       end
     end
     @end_time = Time.now.to_i
