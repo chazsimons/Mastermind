@@ -7,7 +7,7 @@ class Guess
 
   def initialize(secret)
     @secret = secret
-    @user_input = []
+    @user_input
     @positions = 0
     @text = Text.new
   end

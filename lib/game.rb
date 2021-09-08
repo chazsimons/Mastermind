@@ -11,8 +11,6 @@ class Game
     @secret = []
     @guess = Guess.new(@secret)
     @text = Text.new
-    @start_time = 0
-    @end_time = 0
   end
 
   def create_code
@@ -25,7 +23,7 @@ class Game
 
   def start
     create_code
-    @start_time = Time.now.to_i
+    start_time = Time.now.to_i
     @count = 0
     @text.announcement
     until @guess.positions == 4 do
@@ -39,12 +37,12 @@ class Game
         @text.keep_guessing
       end
     end
-    @end_time = Time.now.to_i
-    endgame
+    end_time = Time.now.to_i
+    endgame(start_time, end_time)
   end
 
-  def endgame
-    total_time = @end_time - @start_time
+  def endgame(start_time, end_time)
+    total_time = end_time - start_time
     minutes = total_time / 60
     seconds = total_time % 60
 
