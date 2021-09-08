@@ -32,8 +32,8 @@ describe Game do
 
   it "can determine the positions correct of a guess" do
     game = Game.new
-    allow(game).to receive(:secret).and_return(['R', 'R', 'R', 'R'])
-    allow(game).to receive(:user_input).and_return(['R', 'G', 'B', 'Y'])
+    allow(game).to receive(:create_code).and_return(['R', 'R', 'R', 'R'])
+    allow(game).to receive(:get_guess).and_return(['R', 'G', 'B', 'Y'])
     game.evaluate_guess
 
     expect(game.positions).to eq 1
@@ -47,7 +47,5 @@ describe Game do
   #
   #   expect(game.endgame).to eq(90)
   # end
-
-
 
 end

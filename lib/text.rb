@@ -42,5 +42,5 @@ class Text
 
   def exit_message
     puts "Thanks for playing!"
-  end 
+  end
 end

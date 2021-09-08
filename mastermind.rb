@@ -3,7 +3,15 @@ require './lib/text'
 
 text = Text.new
 
-puts "Welcome to Mastermind!"
+# puts "Welcome to Mastermind!"
+
+puts "Welcome to
+╭━╮╭━╮╱╱╱╱╱╭╮╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮
+┃┃╰╯┃┃╱╱╱╱╭╯╰╮╱╱╱╱╱╱╱╱╱╱╱╱╱┃┃
+┃╭╮╭╮┣━━┳━┻╮╭╋━━┳━┳╮╭┳┳━╮╭━╯┃
+┃┃┃┃┃┃╭╮┃━━┫┃┃┃━┫╭┫╰╯┣┫╭╮┫╭╮┃
+┃┃┃┃┃┃╭╮┣━━┃╰┫┃━┫┃┃┃┃┃┃┃┃┃╰╯┃
+╰╯╰╯╰┻╯╰┻━━┻━┻━━┻╯╰┻┻┻┻╯╰┻━━╯"
 
 
 loop do
@@ -28,6 +36,7 @@ loop do
     game = Game.new
     game.start
   elsif input == 'q' || input == 'quit'
+    text.exit_message
     exit(true)
   end
 end
