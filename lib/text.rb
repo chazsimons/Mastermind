@@ -24,7 +24,11 @@ class Text
     print ">"
   end
 
+
+
+
   def repeat
+
     puts "Would you like to (p)lay again or (q)uit?"
     print ">"
   end

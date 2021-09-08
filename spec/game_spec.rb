@@ -14,22 +14,37 @@ describe Game do
 
   it "can take a users input" do
     game = Game.new
-    expect(game.get_guess.length).to eq 4
+
+    expect(game.get_guess).to eq ['R', 'G', 'B', 'Y']
+
     expect(game.get_guess).to be_an(Array)
   end
 
-  it "can check colors and positions of guess" do
+  it 'can check the length' do
     game = Game.new
+    result_long = ['r', 'g', 'b', 'y', 'r']
+    result_short = ['r', 'r']
 
-    expect(game.winner?).to eq 5
+    expect(result_long.length_check).to be true
+
+    expect(result_short.length_check).to be true
+
   end
 
-  it 'can return instructions' do
+  it "can determine the positions correct of a guess" do
     game = Game.new
+    results = game.evaluate_guess
 
-    expect(game.instructions).to be_a(string)
+    expect(results).to eq 
   end
 
-  
+  # it 'can calculate time taken' do
+  #   game = Game.new
+  #   start_time = Time.now.to_i
+  #   end_time = Time.now.to_i
+  #
+  # end
+
+
 
 end
